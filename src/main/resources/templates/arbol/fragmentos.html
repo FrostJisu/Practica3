@@ -5,7 +5,7 @@
     <head th:replace="~{layout/plantilla :: head}">
         <title>Gestión de Árboles</title>
     </head>
-    
+
     <body>
         <!-- 1 Sección para crear el boton de agregar... llamará a una ventana modal-->
         <section th:fragment="botonesAgregar" class="py-4 mb-4 bg-light">
@@ -22,18 +22,18 @@
                     </div>
                     <div class="col-md-3">
                         <a th:href="@{/arbol/listado}" class="btn btn-primary"><button 
-                            type="button" 
-                            class="btn btn-primary btn-block" 
-                            data-bs-toggle="modal" 
-                            data-bs-target="#listadoArboles">
-                            [[#{arbol.actualizar}]]
-                        </button></a>
-                        
+                                type="button" 
+                                class="btn btn-primary btn-block" 
+                                data-bs-toggle="modal" 
+                                data-bs-target="#listadoArboles">
+                                [[#{arbol.actualizar}]]
+                            </button></a>
+
                     </div>
                 </div>
             </div>
         </section>
-        
+
 
         <!-- 2 Fragmento para agregar arbol, es la ventana modal -->
         <section th:fragment="agregarArbol">
@@ -132,7 +132,7 @@
                         <div class="card text-center bg-success text-white mb-3">
                             <div class="card-body">
                                 <h3>[[#{arbol.total}]]</h3>
-                                <h4 class="fs-2"><i class="fas fa-users"></i> [[${totalArboles}]]</h4>
+                                <h4 class="fs-2"><i class="fas fa-tree"></i>[[${totalArboles}]]</h4>
                             </div>
                         </div>
                     </div>
@@ -191,7 +191,6 @@
                 </div>
             </div>
         </section>
-
         <!-- 5 Fragmento que se utiliza en el fragmento anterior -->
         <section th:fragment="botonesEditar">
             <div class="container py-4 mb-4 bg-light">
