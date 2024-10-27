@@ -52,8 +52,20 @@
                               method="POST" class="was-validated" enctype="multipart/form-data">
                             <div class="modal-body">
                                 <div class="mb-3">
-                                    <label for="descripcion">[[#{arbol.descripcion}]]</label>
-                                    <input type="text" class="form-control" name="descripcion" required="true"/>
+                                    <label for="nombreComun">[[#{arbol.descripcion}]]</label>
+                                    <input type="text" class="form-control" name="nombreComun" required="true"/>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="tipoFlor">[[#{arbol.flor}]]</label>
+                                    <input type="text" class="form-control" name="tipoFlor" required="true"/>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="durezaMadera">[[#{arbol.madera}]]</label>
+                                    <input type="text" class="form-control" name="durezaMadera" required="true"/>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="alturaPromedio">[[#{arbol.altura}]]</label>
+                                    <input type="number" class="form-control" name="alturaPromedio" required="true"/>
                                 </div>
                                 <div class="mb-3">
                                     <label for="activo">[[#{arbol.activo}]]</label>
@@ -97,11 +109,11 @@
                                     <tbody>
                                         <tr th:each="arbol, contador : ${arboles}">
                                             <td>[[${contador.count}]]</td>
-                                            <td>[[${arbol.nombre_comun}]]</td>
-                                            <td>[[${arbol.tipo_flor}]]</td>
-                                            <td>[[${arbol.dureza_madera}]]</td>
-                                            <td>[[${arbol.altura_promedio}]]</td>
-                                            <td th:text="${arbol.activos} ? 'Activa' : 'Inactiva'" />
+                                            <td>[[${arbol.nombreComun}]]</td>
+                                            <td>[[${arbol.tipoFlor}]]</td>
+                                            <td>[[${arbol.durezaMadera}]]</td>
+                                            <td>[[${arbol.alturaPromedio}]]</td>
+                                            <td th:text="${arbol.activo} ? 'Activa' : 'Inactiva'" />
                                             <td><a th:href="@{/arbol/eliminar/}+${arbol.id}"
                                                    class="btn btn-danger">
                                                     <i class="fas fa-trash"></i> [[#{accion.eliminar}]]</a>

@@ -34,5 +34,9 @@ public class Arbol implements Serializable{
         this.activo = activo;
     }
 
+
+
+    
+    
     
 }

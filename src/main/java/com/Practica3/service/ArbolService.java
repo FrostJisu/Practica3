@@ -1,13 +1,10 @@
-
 package com.Practica3.service;
-
 import com.Practica3.domain.Arbol;
 import java.util.List;
-
 public interface ArbolService {
     
     // Se obtiene un listado de categorias en un List
-    public List<Arbol> getArboles(boolean activos);
+    public List<Arbol> getArboles(boolean activo);
     
     // Se obtiene un Categoria, a partir del id de un categoria
     public Arbol getArbol(Arbol arbol);
