@@ -10,10 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-/**
- *
- * @author dques
- */
 @Service
 public class ArbolServiceImpl implements ArbolService{
 
@@ -25,9 +21,27 @@ public class ArbolServiceImpl implements ArbolService{
         List<Arbol> lista = arbolDao.findAll();
         
         if(activos){
-            lista.removeIf(e -> !e.isActivos());
+            lista.removeIf(e -> !e.isActivo());
         }
         return lista;
+    }
+    
+    @Override
+    @Transactional(readOnly = true)
+    public Arbol getArbol(Arbol categoria) {
+        return arbolDao.findById(categoria.getId()).orElse(null);
+    }
+
+    @Override
+    @Transactional
+    public void save(Arbol arbol) {
+        arbolDao.save(arbol);
+    }
+
+    @Override
+    @Transactional
+    public void delete(Arbol arbol) {
+        arbolDao.delete(arbol);
     }
 
 }

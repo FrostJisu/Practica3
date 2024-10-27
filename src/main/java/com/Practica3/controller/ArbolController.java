@@ -1,11 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/springframework/Controller.java to edit this template
- */
+
 package com.Practica3.controller;
 
 
+import com.Practica3.domain.Arbol;
 import com.Practica3.service.ArbolService;
+import com.Practica3.service.impl.FirebaseStorageServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,7 +26,42 @@ public class ArbolController {
         var arboles = arbolService.getArboles(false);
         model.addAttribute("arboles", arboles);
         model.addAttribute("totalArboles", arboles.size());
-        return "index";
+        return "/arbol/listado";
     }
-        
+    
+    @GetMapping("/nuevo")
+    public String arbolNuevo(Arbol arbol) {
+        return "/arbol/modifica";
+    }
+
+    @Autowired
+    private FirebaseStorageServiceImpl firebaseStorageService;
+    
+    @PostMapping("/guardar")
+    public String arbolGuardar(Arbol arbol,
+            @RequestParam("imagenFile") MultipartFile imagenFile) {        
+        if (!imagenFile.isEmpty()) {
+            arbolService.save(arbol);
+            arbol.setRutaImagen(
+                    firebaseStorageService.cargaImagen(
+                            imagenFile, 
+                            "arbol", 
+                            arbol.getId()));
+        }
+        arbolService.save(arbol);
+        return "redirect:/arbol/listado";
+    }
+
+    @GetMapping("/eliminar/{id}")
+    public String arbolEliminar(Arbol arbol) {
+        arbolService.delete(arbol);
+        return "redirect:/arbol/listado";
+    }
+
+    @GetMapping("/modificar/{id}")
+    public String arbolModificar(Arbol arbol, Model model) {
+        arbol = arbolService.getArbol(arbol);
+        model.addAttribute("arbol", arbol);
+        return "/arbol/modifica";
+    }
 }

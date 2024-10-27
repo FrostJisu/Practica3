@@ -31,3 +31,4 @@ build/
 
 ### VS Code ###
 .vscode/
+/src/main/resources/firebase/practica3-db377-firebase-adminsdk-wyv26-7d62330ef6.json
