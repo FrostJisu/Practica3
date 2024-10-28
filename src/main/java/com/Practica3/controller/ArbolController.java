@@ -1,4 +1,5 @@
 package com.Practica3.controller;
+
 import com.Practica3.domain.Arbol;
 import com.Practica3.service.ArbolService;
 import com.Practica3.service.impl.FirebaseStorageServiceImpl;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+
 @Controller
 @RequestMapping("/arbol")
 public class ArbolController {
@@ -21,7 +23,7 @@ public class ArbolController {
         var arboles = arbolService.getArboles(false);
         model.addAttribute("arboles", arboles);
         model.addAttribute("totalArboles", arboles.size());
-        return "index";
+        return "/arbol/listado";
     }
     
     @GetMapping("/nuevo")

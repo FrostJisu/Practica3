@@ -4,17 +4,72 @@
     <head th:replace="layout/plantilla :: head"> 
     </head>
     <style>
-            .row{
-                margin-left: 242px;
-            }
-        </style>
+        .content {
+            text-align: center;
+            margin-top: 50px;
+        }
+        .row{
+            margin-left: 242px;
+        }
+        .tree-image {
+            max-width: 100%;
+            height: auto;
+            margin: 20px 0; /* Espacio entre el botón y la imagen */
+        }
+
+    </style>
     <body>
         <header th:replace="layout/plantilla :: header"></header>
-        
-        <section th:replace="arbol/fragmentos :: botonesAgregar"></section>
-        <section th:replace="arbol/fragmentos :: agregarArbol"></section>
-        <section th:replace="arbol/fragmentos :: listadoArboles"></section>
-        
+
+        <div class="content">
+            <div>
+                <a th:href="@{/arbol/listado}" class="btn btn-primary">
+                    <button 
+                        type="button" 
+                        class="btn btn-primary btn-block" 
+                        data-bs-toggle="modal" 
+                        data-bs-target="#listadoArboles">
+                        [[#{arbol.verlist}]]
+                    </button>
+                </a>
+            </div>
+            
+            <a th:href="@{/arbol/listado}" class="btn btn-primary" style="margin: 0 20px;">
+                <button 
+                    type="button" 
+                    class="btn btn-primary btn-block" 
+                    data-bs-toggle="modal" 
+                    data-bs-target="#listadoArboles">
+                    [[#{arbol.verlist}]]
+                </button>
+            </a>
+
+            <img src="/imgs/arbolindex.jpg" alt="Imagen de un árbol" class="tree-image" />
+
+            <a th:href="@{/arbol/listado}" class="btn btn-primary" style="margin: 0 20px;">
+                <button 
+                    type="button" 
+                    class="btn btn-primary btn-block" 
+                    data-bs-toggle="modal" 
+                    data-bs-target="#listadoArboles">
+                    [[#{arbol.verlist}]]
+                </button>
+            </a>
+
+            <div>
+                <a th:href="@{/arbol/listado}" class="btn btn-primary">
+                    <button 
+                        type="button" 
+                        class="btn btn-primary btn-block" 
+                        data-bs-toggle="modal" 
+                        data-bs-target="#listadoArboles">
+                        [[#{arbol.verlist}]]
+                    </button>
+                </a>
+            </div>
+
+        </div>
+
         <footer th:replace="layout/plantilla :: footer"></footer>
     </body>
 </html>
